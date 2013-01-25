@@ -1,6 +1,10 @@
 try 
     close(MW.handle); % Close old output form
 end
+try
+    clear TrueValues 
+    StratResults.delete();
+end
 
 close all
 clear 
