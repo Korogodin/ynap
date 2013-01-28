@@ -4,11 +4,11 @@ function plot_Res_ErrorPhaseDiff(hObject, Kind)
 header; % DO NOT EDIT
 
 % global ST Cm
-global StratResults
-global TrueValues
+global StratResults KRes
+global TrueValues BigKRes
 
 t = TrueValues.t*1000;
-plot(hA, t,  (StratResults.ArgMax{1}-TrueValues.psi1)/2/pi, t,  (StratResults.Mean{1}-TrueValues.psi1)/2/pi)
+plot(hA, t,  (StratResults.ArgMax{1}-TrueValues.psi1)/2/pi, t,  (StratResults.Mean{1}-TrueValues.psi1)/2/pi, t,  (BigKRes.X{1}-TrueValues.psi1)/2/pi, t,  (KRes.X{1}-TrueValues.psi1)/2/pi)
 title(hA, 'Error of phase difference estimation');
 ylabel(hA, '\psi, cycles');
 xlabel(hA, 't, msec');

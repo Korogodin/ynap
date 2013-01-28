@@ -1,5 +1,5 @@
 % Controls
-MW.CG.addControl('pushbutton', 'process(MW)', 'Go');
+MW.CG.addControl('pushbutton', 'start_stat(MW)', 'Go');
 global h_timer
 h_timer = MW.CG.addControl2('text', '', 'Timer');
 
@@ -20,6 +20,9 @@ ArrPlace = zeros(2,2); ArrPlace(2, 1) = 1; MW.PG{p2}.newAxes(ArrPlace, 'plot_Res
 ArrPlace = zeros(2,2); ArrPlace(1, 2) = 1; MW.PG{p2}.newAxes(ArrPlace, 'plot_Res_ErrorPhaseDiff');
 ArrPlace = zeros(2,2); ArrPlace(2, 2) = 1; MW.PG{p2}.newAxes(ArrPlace, 'plot_Res_ErrorPhaseDiffRate');
 
+% Panel of Statistic
+p3 = MW.newPG('Statistic', 'Statistic', 1, 1);
+ArrPlace = zeros(1,1); ArrPlace(1, 1) = 1; MW.PG{p3}.newAxes(ArrPlace, 'plot_Stat');
 
 
 % p2 = MW.newPG('Big Kalman', 'Big Kalm', 3, 2);

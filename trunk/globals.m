@@ -1,1 +1,1 @@
-global TrueValues StratResults
+global TrueValues StratResults KRes Erro BigKRes
