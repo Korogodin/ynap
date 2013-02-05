@@ -1,5 +1,9 @@
 % Controls
-MW.CG.addControl('pushbutton', 'start_stat(MW)', 'Go');
+if JS_Test
+    MW.CG.addControl('pushbutton', 'start_JS_Test(MW)', 'JS Test');
+else
+    MW.CG.addControl('pushbutton', 'start_stat(MW)', 'Sens');
+end
 global h_timer
 h_timer = MW.CG.addControl2('text', '', 'Timer');
 
