@@ -1,6 +1,10 @@
 
-% argSop2 = (PW + Kalm.Xextr(2)*tint)';
-argSop2 = (PW)';
+if ZeroPsiOp
+    argSop2 = (PW)';
+else
+    argSop2 = (PW + Kalm.Xextr(2)*tint)';
+end
+% argSop2 = (PW)';
 Sop2cos = cos(argSop2);
 Sop2sin = sin(argSop2);
 I2 = y2 * Sop2cos;

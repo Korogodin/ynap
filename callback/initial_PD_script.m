@@ -9,11 +9,11 @@ if qcno_dB > 20
 else
     dpsi(1) = 2*pi/ 120;
 end
+% dpsi(1) = 2*pi/360;
 
-H_psi1 = 4*dpsi(1) ;
-% H_psi1 = 2*pi;
+H_psi1 = 30*dpsi(1) ;
 D_extr_psi1 = (H_psi1^2)/12;
-psi1s = (rand(1,1) - 0.5)*H_psi1; % psi_0
+psi1s = (rand(1,1) - 0.5)*H_psi1 * 0; % psi_0
 
 % Initial PD of PhD rate
 % H_psi2 = 2*pi*lbase/lambda0 / 3 ;
@@ -22,14 +22,20 @@ if qcno_dB > 20
 else
     H_psi2 = sqrt(12*Dksi) * 1.5;
 end
-
+% if Dksi<0.1
+%     H_psi2 = H_psi2 * 2;
+% end
 D_extr_psi2 = (H_psi2^2)/12;
-psi2s = (rand(1,1) - 0.5)*H_psi2; % (diff psi)_0
+psi2s = (rand(1,1) - 0.5)*H_psi2 *0; % (diff psi)_0  
 
-Xs = [psi1s; psi2s];
+Xs = [psi1s; psi2s]; % = 0 -> for Kalm and Strat equi
+% Xs = [pi/4; 0];
 
-Npsi2 = 10; % Number of points by axes
-maxpsi = [1.5*H_psi1/2; 4*sqrt(D_extr_psi2)]; % Argument's area
+Npsi2 = 16; % Number of points by axes
+% if Dksi<0.1
+%     Npsi2 = Npsi2 * 2;
+% end
+maxpsi = [2*H_psi1/2; 4*sqrt(D_extr_psi2)]; % Argument's area
 minpsi = -maxpsi;
 dpsi(2) = (maxpsi(2)-minpsi(2)) ./ Npsi2; % differential step
 psi1 = minpsi(1):dpsi(1):maxpsi(1); % Argument's vectors
