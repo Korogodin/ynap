@@ -1,4 +1,4 @@
-function plot_example(hObject, Kind)
+function plot_Stat(hObject, Kind)
 %plot_example Example of plot function for axes
 
 header; % DO NOT EDIT

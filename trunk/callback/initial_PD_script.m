@@ -9,9 +9,11 @@ if qcno_dB > 20
 else
     dpsi(1) = 2*pi/ 120;
 end
-% dpsi(1) = 2*pi/360;
+dpsi(1) = 2*pi/360;
 
-H_psi1 = 30*dpsi(1) ;
+% dpsi(1) = 2*pi/500;
+% H_psi1 = 30*dpsi(1) ;
+H_psi1 = 5*dpsi(1) ;
 D_extr_psi1 = (H_psi1^2)/12;
 psi1s = (rand(1,1) - 0.5)*H_psi1 * 0; % psi_0
 
@@ -32,6 +34,8 @@ Xs = [psi1s; psi2s]; % = 0 -> for Kalm and Strat equi
 % Xs = [pi/4; 0];
 
 Npsi2 = 16; % Number of points by axes
+% Npsi2 = 24; % Number of points by axes
+% Npsi2 = 32; % Number of points by axes
 % if Dksi<0.1
 %     Npsi2 = Npsi2 * 2;
 % end

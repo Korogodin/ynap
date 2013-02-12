@@ -65,11 +65,11 @@ for i = 1:StatFile.len_qcno_dB
         SFS.EK2PLL(j10) = StatFile.K2PLL(i) / StatFile.NK2PLL(i);
     end       
     
-    if StatFile.NKalm2_w0_corr(i) > 0
-        j11 = j11 + 1;
-        SFS.qcno_dB_Kalm2_w0_corr(j11) = StatFile.qcno_dB(i);
-        SFS.EKalm2_w0_corr(j11) = StatFile.Kalm2_w0_corr(i) / StatFile.NKalm2_w0_corr(i);
-    end         
+%     if StatFile.NKalm2_w0_corr(i) > 0
+%         j11 = j11 + 1;
+%         SFS.qcno_dB_Kalm2_w0_corr(j11) = StatFile.qcno_dB(i);
+%         SFS.EKalm2_w0_corr(j11) = StatFile.Kalm2_w0_corr(i) / StatFile.NKalm2_w0_corr(i);
+%     end         
 end
 
 % M = 2;
@@ -122,6 +122,7 @@ plot(SFS.qcno_dB_ArgMax, SFS.EArgMax*360, SFS.qcno_dB_Mean, SFS.EMean*360, SFS.q
 ylabel('RMS error of phase difference, deg') 
 xlabel('q_{c/n0}, dBHz')
 % ylim([0 0.15]);
-ylim([0 0.15]*360);
+ylim([0 60]);
+legend( 'ArgMax', 'Mean', 'BigKalm', 'BigKalm_{w0}', 'Kalm2', 'Kalm2_{w0}', '2PLL');
 % legend( 'ArgMax', 'Mean', 'BigKalm', 'BigKalm_{w0}', 'Kalm2', 'Kalm2_{w0}', 'Kalm2_{w0}_{corr}', '2PLL');
 grid on

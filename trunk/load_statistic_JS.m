@@ -12,10 +12,10 @@
 % StatFile_JS.backup = 0;
 % save('Stat_JS.mat', 'StatFile_JS');
 
-load('Stat_JS_0.mat', 'StatFile_JS');
+load('Stat_JS.mat', 'StatFile_JS');
 
 clear SFS;
-j1 = 0; j2 = 0; j3 = 0; j4 = 0; j5 = 0; j6 = 0;
+j1 = 0; j2 = 0; j3 = 0; j4 = 0; j5 = 0; j6 = 0; j7 = 0; j8 = 0; j9 = 0; j10 = 0;
 for i = 1:StatFile_JS.len_JS
 
     if StatFile_JS.NArgMax(i) > 0
@@ -53,6 +53,25 @@ for i = 1:StatFile_JS.len_JS
         SFS.JS_KalmBand(j6) = StatFile_JS.JS(i);
         SFS.KalmBand(j6) = StatFile_JS.KalmBand(i);
     end        
+    
+    if StatFile_JS.NKalm2_w0(i) > 0
+        j7 = j7 + 1;
+        SFS.JS_Kalm2_w0(j7) = StatFile_JS.JS(i);
+        SFS.EKalm2_w0(j7) = StatFile_JS.Kalm2_w0(i) / StatFile_JS.NKalm2_w0(i);
+    end       
+    
+    if StatFile_JS.NBigKalm2_w0(i) > 0
+        j8 = j8 + 1;
+        SFS.JS_BigKalm2_w0(j8) = StatFile_JS.JS(i);
+        SFS.EBigKalm2_w0(j8) = StatFile_JS.BigKalm2_w0(i) / StatFile_JS.NBigKalm2_w0(i);
+    end       
+
+    if StatFile_JS.NK2PLL(i) > 0
+        j9 = j9 + 1;
+        SFS.JS_K2PLL(j9) = StatFile_JS.JS(i);
+        SFS.EK2PLL(j9) = StatFile_JS.K2PLL(i) / StatFile_JS.NK2PLL(i);
+    end    
+
 end
 
 % M = 2;
@@ -67,12 +86,12 @@ end
 % set(get(AX(2),'Ylabel'),'String','Band, Hz') 
 % xlabel('q_{c/n0}, dBHz')
 % 
-figure(7)
-hold on
-plot(SFS.JS_Kalm2, SFS.EKalm2);
-hold off
-ylabel('RMS error of phase difference, cycles') 
-xlabel('J/S, dB')
+% figure(7)
+% hold on
+% plot(SFS.JS_Kalm2, SFS.EKalm2);
+% hold off
+% ylabel('RMS error of phase difference, cycles') 
+% xlabel('J/S, dB')
 % 
 
 % figure(10)
@@ -81,8 +100,9 @@ xlabel('J/S, dB')
 % xlabel('J/S, dB')
 
 figure(10)
-plot(SFS.JS_ArgMax, SFS.EArgMax, SFS.JS_Mean, SFS.EMean, SFS.JS_Kalm2, SFS.EKalm2)
-ylabel('RMS error of phase difference, cycles') 
+plot(SFS.JS_ArgMax, SFS.EArgMax*360, SFS.JS_Mean, SFS.EMean*360, SFS.JS_BigKalm2_w0, SFS.EBigKalm2_w0*360, SFS.JS_Kalm2_w0, SFS.EKalm2_w0*360, SFS.JS_K2PLL, SFS.EK2PLL*360)
+% plot(SFS.JS_BigKalm2_w0, SFS.EBigKalm2_w0*360, SFS.JS_Kalm2_w0, SFS.EKalm2_w0*360, SFS.JS_K2PLL, SFS.EK2PLL*360)
+ylabel('RMS error of phase difference, deg') 
 xlabel('J/S, dB')
 % xlim([14 50])
-% ylim([0 0.165])
+ylim([0 60])

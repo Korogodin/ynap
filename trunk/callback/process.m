@@ -16,7 +16,7 @@ F = [1 T;
 G = [0; 1];
 nx = 2;
 
-K = 200;
+K = 2000;
 L = round(T/Td);
 M = 2;
 
@@ -120,13 +120,40 @@ for k = 1:K
     end
 end
 
-[nul i] = min(abs(Erro.qcno_dB - qcno_dB));
+if JS_Test
+    [nul i] = min(abs(Erro.JS - JS));
+else
+    [nul i] = min(abs(Erro.qcno_dB - qcno_dB));
+end
 if nul == 0
-    Erro.MeanErrPhi_Kalm(i) = CalcRMS( TrueValues.psi1, TrueValues.psi2, KRes.X{1}, KRes.X{2}, T, L, K );
+    
+        if DoStrat
+            Erro.MeanErrPhi_ArgMax(i) = CalcRMS( TrueValues.psi1, TrueValues.psi2, StratResults.ArgMax{1}, StratResults.ArgMax{2}, T, L, K );
+            Erro.MeanErrPhi_Mean(i) = CalcRMS( TrueValues.psi1, TrueValues.psi2, StratResults.Mean{1}, StratResults.Mean{2}, T, L, K );
+        end
+        
+        if DoKalm
+            if (ZeroPsiOp == 1)&&(UseCorrHess == 0)
+                Erro.MeanErrPhi_Kalm(i) = CalcRMS_mean( TrueValues.psi1, TrueValues.psi2, KRes.X{1}, KRes.X{2}, T, L, K );
+            else
+                Erro.MeanErrPhi_Kalm(i) = CalcRMS( TrueValues.psi1, TrueValues.psi2, KRes.X{1}, KRes.X{2}, T, L, K );
+            end
+            Erro.KalmBand(i) = KRes.Band;
+        end
+
+        if DoBigKalm
+            Erro.MeanErrPhi_BigKalm(i) = CalcRMS( TrueValues.psi1, TrueValues.psi2, BigKRes.X{1}, BigKRes.X{2}, T, L, K );
+        end
+        
+        if Do2PLL
+            Erro.MeanErrPhi_Res2PLL(i) = CalcRMS( TrueValues.psi1, TrueValues.psi2, Res2PLL.X{1}, Res2PLL.X{2}, T, L, K );
+        end
+    
 else
     disp('qcno error in process save');
     error;
 end
     
+
 end
 
