@@ -25,13 +25,13 @@
 % 
 % StatFile.NBigKalm2_w0 = zeros(1, StatFile.len_qcno_dB); % psi' op = 0
 % StatFile.BigKalm2_w0 = zeros(1, StatFile.len_qcno_dB);
-
+% 
 % StatFile.KalmBand = zeros(1, StatFile.len_qcno_dB);
 % StatFile.KalmBand2 = zeros(1, StatFile.len_qcno_dB);
-% 
+% % 
 % StatFile.NK2PLL = zeros(1, StatFile.len_qcno_dB);
 % StatFile.K2PLL = zeros(1, StatFile.len_qcno_dB);
-
+% 
 % StatFile.backup = 0;
 % save('Stat.mat', 'StatFile');
 
@@ -113,30 +113,3 @@ for i = 1:length(Erro.qcno_dB)
 end
 
 save('Stat.mat', 'StatFile')
-
-% j1 = 0; j2 = 0; j3 = 0;
-% for i = 1:StatFile.len_qcno_dB
-% 
-%     if StatFile.NArgMax(i) > 0
-%         j1 = j1+ 1;
-%         SFS.qcno_dB_ArgMax(j1) = StatFile.qcno_dB(i);
-%         SFS.EArgMax(j1) = StatFile.ArgMax(i) / StatFile.NArgMax(i);
-%     end
-%     
-%     if StatFile.NMean(i) > 0
-%         j2 = j2 + 1;
-%         SFS.qcno_dB_Mean(j2) = StatFile.qcno_dB(i);
-%         SFS.EMean(j2) = StatFile.Mean(i) / StatFile.NMean(i);
-%     end
-%     
-%     if StatFile.NKalm(i) > 0
-%         j3 = j3 + 1;
-%         SFS.qcno_dB_Kalm(j3) = StatFile.qcno_dB(i);
-%         SFS.EKalm(j3) = StatFile.Kalm(i) / StatFile.NKalm(i);
-%     end    
-% end
-% 
-% figure(10)
-% plot(SFS.qcno_dB_ArgMax, SFS.EArgMax, SFS.qcno_dB_Mean, SFS.EMean, SFS.qcno_dB_Kalm, SFS.EKalm)
-% xlabel('q_{c/n0}, dBHz')
-% ylabel('RMS error of phase difference, cycles');

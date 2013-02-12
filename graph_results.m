@@ -76,31 +76,31 @@ qcno_dB = 10:1:50;
 Profile = 1;
 
 if Profile == 1
-    qcno_dB_ArgMax1 = 18:1:50; EArgMax = interp1(SFS.qcno_dB_ArgMax, SFS.EArgMax*360, qcno_dB_ArgMax1, 'cubic');
-    qcno_dB_ArgMax = 18:0.1:50; EArgMax = interp1(qcno_dB_ArgMax1, EArgMax, qcno_dB_ArgMax, 'cubic');
+    qcno_dB_ArgMax1 = [15:2:20 23:3:50]; EArgMax = interp1(SFS.qcno_dB_ArgMax, SFS.EArgMax*360, qcno_dB_ArgMax1, 'cubic');
+    qcno_dB_ArgMax = 14:0.1:50; EArgMax = interp1(qcno_dB_ArgMax1, EArgMax, qcno_dB_ArgMax, 'cubic');
     
-    qcno_dB_Mean1 = 18:1:50; EMean = interp1(SFS.qcno_dB_Mean, SFS.EMean*360, qcno_dB_Mean1, 'cubic');
-    qcno_dB_Mean = 18:0.1:50; EMean = interp1(qcno_dB_Mean1, EMean, qcno_dB_Mean, 'cubic');
+    qcno_dB_Mean1 = [15.3:2:20 23:3:50]; EMean = interp1(SFS.qcno_dB_Mean, SFS.EMean*360, qcno_dB_Mean1, 'cubic');
+    qcno_dB_Mean = 14:0.1:50; EMean = interp1(qcno_dB_Mean1, EMean, qcno_dB_Mean, 'cubic');
 
-    qcno_dB_BigKalm21 = [21:1.8:30 35 40 45 49]; EBigKalm2 = interp1(SFS.qcno_dB_BigKalm2, SFS.EBigKalm2*360, qcno_dB_BigKalm21, 'cubic');
-    qcno_dB_BigKalm2 = 18:0.1:50; EBigKalm2 = interp1(qcno_dB_BigKalm21, EBigKalm2, qcno_dB_BigKalm2, 'cubic');  
+    qcno_dB_BigKalm21 = [15:1.8:30 35 40 45 49]; EBigKalm2 = interp1(SFS.qcno_dB_BigKalm2, SFS.EBigKalm2*360, qcno_dB_BigKalm21, 'cubic');
+    qcno_dB_BigKalm2 = 15:0.1:50; EBigKalm2 = interp1(qcno_dB_BigKalm21, EBigKalm2, qcno_dB_BigKalm2, 'cubic');  
     
-    qcno_dB_BigKalm2_w01 = [19:3:30 35 40 45 49]; EBigKalm2_w0 = interp1(SFS.qcno_dB_BigKalm2_w0, SFS.EBigKalm2_w0*360, qcno_dB_BigKalm2_w01, 'cubic');
-    qcno_dB_BigKalm2_w0 = 18:0.1:50; EBigKalm2_w0 = interp1(qcno_dB_BigKalm2_w01, EBigKalm2_w0, qcno_dB_BigKalm2_w0, 'cubic'); 
+    qcno_dB_BigKalm2_w01 = [16:1.7:30 35 40 45 49]; EBigKalm2_w0 = interp1(SFS.qcno_dB_BigKalm2_w0, SFS.EBigKalm2_w0*360, qcno_dB_BigKalm2_w01, 'cubic');
+    qcno_dB_BigKalm2_w0 = 16:0.1:50; EBigKalm2_w0 = interp1(qcno_dB_BigKalm2_w01, EBigKalm2_w0, qcno_dB_BigKalm2_w0, 'cubic'); 
     
-    SFS.qcno_dB_Kalm2(1:9) = SFS.qcno_dB_Kalm2(1:9) - 0.4;
-    SFS.qcno_dB_Kalm2(9) = SFS.qcno_dB_Kalm2(9) - 0.1;
-    qcno_dB_Kalm21 = [19:3:30 35 50]; EKalm2 = interp1(SFS.qcno_dB_Kalm2, SFS.EKalm2*360, qcno_dB_Kalm21, 'cubic');
-    qcno_dB_Kalm2 = 18:0.1:50; EKalm2 = interp1(qcno_dB_Kalm21, EKalm2, qcno_dB_Kalm2, 'cubic');       
+%     SFS.qcno_dB_Kalm2(1:9) = SFS.qcno_dB_Kalm2(1:9) - 0.4;
+%     SFS.qcno_dB_Kalm2(9) = SFS.qcno_dB_Kalm2(9) - 0.1;
+    qcno_dB_Kalm21 =[16:1:20 23:3:50]; EKalm2 = interp1(SFS.qcno_dB_Kalm2, SFS.EKalm2*360, qcno_dB_Kalm21, 'cubic');
+    qcno_dB_Kalm2 = 15:0.1:50; EKalm2 = interp1(qcno_dB_Kalm21, EKalm2, qcno_dB_Kalm2, 'cubic');       
 
-    qcno_dB_Kalm2_w0_corr1 = [18:3.5:30 35 50]; EKalm2_w0_corr = interp1(SFS.qcno_dB_Kalm2_w0_corr, SFS.EKalm2_w0_corr*360, qcno_dB_Kalm2_w0_corr1, 'cubic');
-    qcno_dB_Kalm2_w0_corr = 18:0.1:50; EKalm2_w0_corr = interp1(qcno_dB_Kalm2_w0_corr1, EKalm2_w0_corr, qcno_dB_Kalm2_w0_corr, 'cubic');       
+%     qcno_dB_Kalm2_w0_corr1 = [18:3.5:30 35 50]; EKalm2_w0_corr = interp1(SFS.qcno_dB_Kalm2_w0_corr, SFS.EKalm2_w0_corr*360, qcno_dB_Kalm2_w0_corr1, 'cubic');
+%     qcno_dB_Kalm2_w0_corr = 18:0.1:50; EKalm2_w0_corr = interp1(qcno_dB_Kalm2_w0_corr1, EKalm2_w0_corr, qcno_dB_Kalm2_w0_corr, 'cubic');       
     
-    qcno_dB_Kalm2_w01 = [19:3:30 35 50]; EKalm2_w0 = interp1(SFS.qcno_dB_Kalm2_w0, SFS.EKalm2_w0*360, qcno_dB_Kalm2_w01, 'cubic');
-    qcno_dB_Kalm2_w0 = 18:0.1:50; EKalm2_w0 = interp1(qcno_dB_Kalm2_w01, EKalm2_w0, qcno_dB_Kalm2_w0, 'cubic');       
+    qcno_dB_Kalm2_w01 = [14:2:20 23:3:50]; EKalm2_w0 = interp1(SFS.qcno_dB_Kalm2_w0, SFS.EKalm2_w0*360, qcno_dB_Kalm2_w01, 'cubic');
+    qcno_dB_Kalm2_w0 = 15:0.1:50; EKalm2_w0 = interp1(qcno_dB_Kalm2_w01, EKalm2_w0, qcno_dB_Kalm2_w0, 'cubic');       
     
-    qcno_dB_K2PLL1 = [19:3:40 50]; EK2PLL = interp1(SFS.qcno_dB_K2PLL, SFS.EK2PLL*360, qcno_dB_K2PLL1, 'cubic');
-    qcno_dB_K2PLL = 18:0.1:50; EK2PLL = interp1(qcno_dB_K2PLL1, EK2PLL, qcno_dB_K2PLL, 'cubic')    
+    qcno_dB_K2PLL1 = [16:1:40 50]; EK2PLL = interp1(SFS.qcno_dB_K2PLL, SFS.EK2PLL*360, qcno_dB_K2PLL1, 'cubic');
+    qcno_dB_K2PLL = 18:0.1:50; EK2PLL = interp1(qcno_dB_K2PLL1, EK2PLL, qcno_dB_K2PLL, 'cubic');
 end
 
 
@@ -114,7 +114,7 @@ p = plot(SFS.qcno_dB_Mean, SFS.EMean*360, '.', qcno_dB_Mean, EMean,  'LineWidth'
 p = plot(SFS.qcno_dB_BigKalm2, SFS.EBigKalm2*360, '.', qcno_dB_BigKalm2, EBigKalm2, 'LineWidth', 2); set(p, 'Color', [1, 0, 0]);
 p = plot(SFS.qcno_dB_BigKalm2_w0, SFS.EBigKalm2_w0*360, '.', qcno_dB_BigKalm2_w0, EBigKalm2_w0, 'LineWidth', 2); set(p, 'Color', [0.98, 0.6, 0]);
 p = plot(SFS.qcno_dB_Kalm2, SFS.EKalm2*360, '.', qcno_dB_Kalm2, EKalm2, 'LineWidth', 2); set(p, 'Color', [0, 1, 0]); 
-p = plot(SFS.qcno_dB_Kalm2_w0_corr, SFS.EKalm2_w0_corr*360, '.', qcno_dB_Kalm2_w0_corr, EKalm2_w0_corr, 'LineWidth', 2); set(p, 'Color', [0, 0.7, 0.4]);
+% % p = plot(SFS.qcno_dB_Kalm2_w0_corr, SFS.EKalm2_w0_corr*360, '.', qcno_dB_Kalm2_w0_corr, EKalm2_w0_corr, 'LineWidth', 2); set(p, 'Color', [0, 0.7, 0.4]);
 p = plot(SFS.qcno_dB_Kalm2_w0, SFS.EKalm2_w0*360, '.', qcno_dB_Kalm2_w0, EKalm2_w0, 'LineWidth', 2); set(p, 'Color', [0, 0.99, 0.7]);
 p = plot(SFS.qcno_dB_K2PLL, SFS.EK2PLL*360, '.', qcno_dB_K2PLL, EK2PLL, 'LineWidth', 2); set(p, 'Color', [0.5, 0.5, 0.5]);
 hold off

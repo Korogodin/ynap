@@ -1,0 +1,7 @@
+Sensivity
+Sksi = 3e1;
+T = 20
+Delta_Np = 10
+
+Kalm - 3 order
+Kalm2 - 2 order
